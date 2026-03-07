@@ -1,13 +1,12 @@
-
-<p align="center">
-  <a href="https://blog.falghifari.com">
-    <img alt="Blog Logo" src="./assets/logo_white_bg.png" width="80%" style="border-radius: 16px;" />
-  </a>
-</p>
-
 # Tech Blog
 
 A Gatsby-based tech blog built with React, styled-components, and local Markdown files for content management.
+
+<p align="center">
+  <a href="https://blog.falghifari.com">
+    <img src="./assets/tech-blog-demo.gif" alt="Tech Blog Demo" width="100%" />
+  </a>
+</p>
 
 ## 📋 Prerequisites
 

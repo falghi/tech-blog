@@ -1,7 +1,7 @@
 
 <p align="center">
   <a href="https://www.genkifood.id">
-    <img alt="Genki Food" src="./assets/logo_transparent_cropped.png" width="80%" />
+    <img alt="Genki Food" src="./assets/logo_white_bg_cropped.png" width="80%" style="border-radius: 16px;" />
   </a>
 </p>
 

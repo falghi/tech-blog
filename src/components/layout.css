@@ -1,0 +1,61 @@
+/* open-sans-regular - latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/open-sans-v17-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Open Sans Regular'), local('OpenSans-Regular'),
+    url('../fonts/open-sans-v17-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/open-sans-v17-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/open-sans-v17-latin-regular.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/open-sans-v17-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/open-sans-v17-latin-regular.svg#OpenSans') format('svg'); /* Legacy iOS */
+}
+
+/* roboto-regular - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/roboto-v20-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Roboto'), local('Roboto-Regular'),
+    url('../fonts/roboto-v20-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/roboto-v20-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/roboto-v20-latin-regular.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/roboto-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/roboto-v20-latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+}
+
+/* Playlist Script */
+@font-face {
+  font-family: 'Playlist Script';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Playlist Script'),
+    url('../fonts/Playlist Script.woff') format('woff'),
+    url('../fonts/Playlist Script.otf') format('opentype');
+}
+
+/* Playlist Caps */
+@font-face {
+  font-family: 'Playlist Caps';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Playlist Caps'),
+    url('../fonts/Playlist Caps.otf') format('opentype');
+}
+
+/* MuiDrawers are located outside <Styles>, that's why it's here */
+.MuiDrawer-root > .MuiDrawer-paper {
+  width: 300px;
+}
+
+.MuiDrawer-root > .MuiDrawer-paper a.active .MuiTypography-body1 {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 500px) {
+  .MuiDrawer-root > .MuiDrawer-paper {
+    width: 225px;
+  }
+}

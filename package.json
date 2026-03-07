@@ -1,0 +1,70 @@
+{
+  "name": "gatsby-starter-blog",
+  "private": true,
+  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "version": "0.1.0",
+  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "gatsby": "^2.32.13",
+    "gatsby-image": "^2.11.0",
+    "gatsby-plugin-feed": "^2.13.1",
+    "gatsby-plugin-google-analytics": "^2.11.0",
+    "gatsby-plugin-manifest": "^2.12.1",
+    "gatsby-plugin-material-ui": "^2.1.9",
+    "gatsby-plugin-offline": "^3.10.2",
+    "gatsby-plugin-react-helmet": "^3.10.0",
+    "gatsby-plugin-sharp": "^2.14.4",
+    "gatsby-plugin-sitemap": "^2.12.0",
+    "gatsby-plugin-styled-components": "^3.10.0",
+    "gatsby-plugin-typography": "^2.12.0",
+    "gatsby-remark-copy-linked-files": "^2.10.0",
+    "gatsby-remark-images": "^3.11.1",
+    "gatsby-remark-prismjs": "^3.13.0",
+    "gatsby-remark-responsive-iframe": "^2.11.0",
+    "gatsby-remark-smartypants": "^2.10.0",
+    "gatsby-source-filesystem": "^2.11.1",
+    "gatsby-transformer-json": "^2.11.0",
+    "gatsby-transformer-remark": "^2.16.1",
+    "gatsby-transformer-sharp": "^2.12.1",
+    "prismjs": "^1.23.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.1.0",
+    "react-toastify": "^6.0.8",
+    "react-typography": "^0.16.19",
+    "styled-components": "^5.2.1",
+    "typeface-merriweather": "0.0.72",
+    "typeface-montserrat": "0.0.75",
+    "typography": "^0.16.19",
+    "typography-theme-wordpress-2016": "^0.16.19"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "prettier": "2.0.5"
+  },
+  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "0BSD",
+  "main": "n/a",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+  },
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "deploy": "gatsby build --prefix-paths",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  }
+}

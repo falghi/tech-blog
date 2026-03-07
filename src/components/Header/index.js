@@ -104,7 +104,7 @@ class Header extends Component {
         </div>
         <div className="logo-top-mid">
           <Link to="/">
-            <Image imgName="logo_white_bg_cropped.png" alt="Logo Genki Food" />
+            <Image imgName="logo_white_bg_cropped.png" alt="Blog Logo" />
           </Link>
         </div>
         <div className="social-media">

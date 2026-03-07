@@ -1,8 +1,6 @@
 import React, { Component } from "react"
 
-import Image from "../image"
 import SmallArticle from "./SmallArticle"
-import VerticalSignupNews from "../VerticalSignupNews"
 
 import { Styles } from "./style"
 

@@ -202,7 +202,7 @@ This site is configured to deploy to GitHub Pages automatically via GitHub Actio
    - `GATSBY_GA_TRACKING_ID` - Your Google Analytics tracking ID (e.g., `UA-164225247-3`)
    - `PATH_PREFIX` - Only needed for project sites (e.g., `/tech-blog`). Leave empty for user/org sites.
 
-3. **Push to master branch** - The GitHub Action will automatically build and deploy
+3. **Push to main branch** - The GitHub Action will automatically build and deploy
 
 ### Deployment Types
 

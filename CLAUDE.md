@@ -179,7 +179,7 @@ cp .env.example .env.development
 
 ## Deployment
 
-Site deploys to GitHub Pages automatically via GitHub Actions when code is pushed to the `master` branch.
+Site deploys to GitHub Pages automatically via GitHub Actions when code is pushed to the `main` branch.
 
 **GitHub Pages Setup:**
 1. Enable GitHub Pages: Settings > Pages > Build and deployment > Source: GitHub Actions

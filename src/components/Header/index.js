@@ -91,7 +91,7 @@ class Header extends Component {
     let pathname = typeof window !== "undefined" ? window.location.pathname : ""
     if (!pathname.endsWith("/")) pathname += "/"
 
-    const topmostPart = (
+    const topmostPart = (imgName) => (
       <div className="topmost-nav-part">
         <div className="button-drawer">
           <IconButton
@@ -104,7 +104,7 @@ class Header extends Component {
         </div>
         <div className="logo-top-mid">
           <Link to="/">
-            <Image imgName="logo_white_bg_cropped.png" alt="Blog Logo" />
+            <Image imgName={imgName} alt="Blog Logo" />
           </Link>
         </div>
         <div className="social-media">
@@ -136,13 +136,13 @@ class Header extends Component {
     return (
       <Styles>
         <div className="topmost-navigation">
-          {topmostPart}
+          {topmostPart("logo_white_bg_long.png")}
         </div>
         {navLists}
         <div className={`sticky-wrapper${isSticky ? ' sticky' : ''}`} ref={this.ref}>
           <div className={`sticky-contents${isBackSticky ? ' sticky-back' : ''}`}>
             <div className="all-nav-contents">
-              {topmostPart}
+              {topmostPart("logo_square_long.png")}
               {navLists}
             </div>
           </div>

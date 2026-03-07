@@ -19,7 +19,7 @@ const zIndexBack = keyframes`
 export const Styles = styled.header`
   .topmost-navigation {
     .logo-top-mid {
-      max-width: 500px;
+      max-width: 400px;
       width: 60%;
       margin: auto;
     }
@@ -93,7 +93,7 @@ export const Styles = styled.header`
 
   .all-nav-contents {
     .logo-top-mid {
-      max-width: 250px;
+      max-width: 200px;
       width: 60%;
       margin: auto;
       display: none;

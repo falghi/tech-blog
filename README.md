@@ -1,7 +1,7 @@
 
 <p align="center">
   <a href="https://blog.falghifari.com">
-    <img alt="Blog Logo" src="./assets/logo_white_bg_cropped.png" width="80%" style="border-radius: 16px;" />
+    <img alt="Blog Logo" src="./assets/logo_white_bg.png" width="80%" style="border-radius: 16px;" />
   </a>
 </p>
 

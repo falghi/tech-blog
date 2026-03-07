@@ -2,21 +2,7 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-module.exports = {
-  pathPrefix: process.env.PATH_PREFIX || "",
-  siteMetadata: {
-    title: `Tech Blog`,
-    author: {
-      name: `Firdaus Al Ghifari`,
-      summary: `Full-stack Software Engineer, Tech Enthusiast.`,
-    },
-    description: `A blog about software development, programming tutorials, and tech insights.`,
-    siteUrl: process.env.GATSBY_SITE_URL || `https://www.genkifood.id`,
-    social: {
-      instagram: `alghi01`,
-    },
-  },
-  plugins: [
+const plugins = [
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -60,12 +46,6 @@ module.exports = {
     `gatsby-transformer-json`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: process.env.GATSBY_GA_TRACKING_ID,
-      },
-    },
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -114,7 +94,7 @@ module.exports = {
             `,
             output: "/rss.xml",
             title: "Tech Blog RSS Feed",
-            link: process.env.GATSBY_SITE_URL || "https://www.genkifood.id",
+            link: process.env.GATSBY_SITE_URL || "https://blog.falghifari.com",
           },
         ],
       },
@@ -151,5 +131,31 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
-  ],
+]
+
+// Conditionally add Google Analytics plugin if tracking ID is provided
+if (process.env.GATSBY_GA_TRACKING_ID) {
+  plugins.push({
+    resolve: `gatsby-plugin-google-analytics`,
+    options: {
+      trackingId: process.env.GATSBY_GA_TRACKING_ID,
+    },
+  })
+}
+
+module.exports = {
+  pathPrefix: process.env.PATH_PREFIX || "",
+  siteMetadata: {
+    title: `Tech Blog`,
+    author: {
+      name: `Firdaus Al Ghifari`,
+      summary: `Full-stack Software Engineer, Tech Enthusiast.`,
+    },
+    description: `A blog about software development, programming tutorials, and tech insights.`,
+    siteUrl: process.env.GATSBY_SITE_URL || `https://blog.falghifari.com`,
+    social: {
+      instagram: `alghi01`,
+    },
+  },
+  plugins,
 }

@@ -64,19 +64,18 @@ Gatsby programmatically creates pages at build time:
 ### Component Structure
 
 **Core Layout:**
-- `src/components/layout.js` - Main layout wrapper with Header, Footer, SubscribeSection, and ToastContainer
+- `src/components/layout.js` - Main layout wrapper with Header, Footer, and ToastContainer
 - Uses `styled-components` with ThemeProvider for consistent theming
 - Theme defined in `src/components/theme.js` with color palette
 
 **Key Page Components:**
 - `LandingPage` - Home page rendering with post listings
-- `BlogPostPage` - Individual blog post display with ads
+- `BlogPostPage` - Individual blog post display
 - `CategoryPage` - Category-specific article listings
 
 **Shared Components:**
 - `Header` - Navigation header
 - `Footer` - Site footer
-- `SubscribeSection` - Newsletter subscription UI
 - `TrendingArtikel` - Trending articles display
 - `RekomendasiArtikel` - Recommended articles
 - `TwoSidedArticleList` - Two-column article layout
@@ -163,8 +162,10 @@ The site uses environment variables for configuration. Copy `.env.example` to `.
 
 **Required Variables:**
 - `GATSBY_SITE_URL` - Full site URL (e.g., `https://username.github.io/tech-blog`)
-- `GATSBY_GA_TRACKING_ID` - Google Analytics tracking ID (e.g., `UA-164225247-3`)
 - `PATH_PREFIX` - Path prefix for GitHub Pages project sites (e.g., `/tech-blog`). Leave empty for user/org sites or custom domains.
+
+**Optional Variables:**
+- `GATSBY_GA_TRACKING_ID` - Google Analytics tracking ID (e.g., `UA-164225247-3`). If not set, Google Analytics will be disabled.
 
 **Setup:**
 ```bash
@@ -184,9 +185,9 @@ Site deploys to GitHub Pages automatically via GitHub Actions when code is pushe
 **GitHub Pages Setup:**
 1. Enable GitHub Pages: Settings > Pages > Build and deployment > Source: GitHub Actions
 2. Add repository secrets (Settings > Secrets and variables > Actions):
-   - `GATSBY_SITE_URL` - Your GitHub Pages URL
-   - `GATSBY_GA_TRACKING_ID` - Your Google Analytics tracking ID
+   - `GATSBY_SITE_URL` - Your GitHub Pages URL (required)
    - `PATH_PREFIX` - Only for project sites (e.g., `/repo-name`)
+   - `GATSBY_GA_TRACKING_ID` - Your Google Analytics tracking ID (optional)
 
 **Deployment Types:**
 - **User/Org site** (`username.github.io`): No PATH_PREFIX needed
@@ -196,4 +197,4 @@ Site deploys to GitHub Pages automatically via GitHub Actions when code is pushe
 
 ## Analytics
 
-Google Analytics tracking configured via `gatsby-plugin-google-analytics`. Tracking ID is set through the `GATSBY_GA_TRACKING_ID` environment variable.
+Google Analytics tracking is optional and configured via `gatsby-plugin-google-analytics`. The plugin is only enabled when the `GATSBY_GA_TRACKING_ID` environment variable is set. If not configured, the site will build and deploy without analytics.

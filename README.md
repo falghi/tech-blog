@@ -1,7 +1,7 @@
 
 <p align="center">
-  <a href="https://www.genkifood.id">
-    <img alt="Genki Food" src="./assets/logo_white_bg_cropped.png" width="80%" style="border-radius: 16px;" />
+  <a href="https://blog.falghifari.com">
+    <img alt="Blog Logo" src="./assets/logo_white_bg_cropped.png" width="80%" style="border-radius: 16px;" />
   </a>
 </p>
 
@@ -196,11 +196,11 @@ This site is configured to deploy to GitHub Pages automatically via GitHub Actio
    - Under "Build and deployment", select "GitHub Actions" as the source
 
 2. **Set up GitHub Secrets** (Settings > Secrets and variables > Actions):
-   - `GATSBY_SITE_URL` - Your GitHub Pages URL:
+   - `GATSBY_SITE_URL` - Your GitHub Pages URL (required):
      - For `username.github.io` (user/org site): `https://username.github.io`
      - For `username.github.io/repo-name` (project site): `https://username.github.io/repo-name`
-   - `GATSBY_GA_TRACKING_ID` - Your Google Analytics tracking ID (e.g., `UA-164225247-3`)
    - `PATH_PREFIX` - Only needed for project sites (e.g., `/tech-blog`). Leave empty for user/org sites.
+   - `GATSBY_GA_TRACKING_ID` - Your Google Analytics tracking ID (optional, e.g., `UA-164225247-3`)
 
 3. **Push to main branch** - The GitHub Action will automatically build and deploy
 
@@ -279,4 +279,4 @@ For project-specific documentation, see `CLAUDE.md`.
 
 ## 📄 License
 
-All Rights Reserved to The Genki Food Company.
+All Rights Reserved to Firdaus Al Ghifari.

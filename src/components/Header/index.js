@@ -29,6 +29,10 @@ export const navData = [
     to: "/category/backend/",
     name: "Backend"
   },
+  {
+    to: "/category/system-design/",
+    name: "System Design"
+  }
 ]
 
 const MediumIcon = () => (

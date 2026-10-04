@@ -1,16 +1,11 @@
 import React from "react"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
-const FluidImg = ({ img, alt, smalldesc, imgStyle }) => (
+const FluidImg = ({ img, alt, smalldesc = "", imgStyle = {} }) => (
   <>
-    <Img fluid={img} alt={alt} imgStyle={imgStyle} />
+    <GatsbyImage image={img} alt={alt} imgStyle={imgStyle} />
     <small dangerouslySetInnerHTML={{ __html: smalldesc }} />
   </>
 )
-
-FluidImg.defaultProps = {
-  smalldesc: "",
-  imgStyle: {}
-}
 
 export default FluidImg

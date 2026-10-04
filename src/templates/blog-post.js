@@ -39,9 +39,13 @@ export const pageQuery = graphql`
         author
         topimage {
           childImageSharp {
-            fluid(maxWidth: 1200, quality: 90) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(
+              layout: CONSTRAINED
+              width: 1200
+              quality: 90
+              placeholder: BLURRED
+              formats: [AUTO, WEBP, AVIF]
+            )
           }
         }
         topimagedesc

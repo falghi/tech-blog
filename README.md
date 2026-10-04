@@ -11,13 +11,21 @@ A Gatsby-based tech blog built with React, styled-components, and local Markdown
 ## 📋 Prerequisites
 
 Before you begin, ensure you have the following installed:
-- **Node.js** (version 12 or higher) - [Download here](https://nodejs.org/)
-- **npm** or **yarn** package manager (comes with Node.js)
 
-To check if you have Node.js installed:
+- **Node.js** (version 18 or higher) - [Download here](https://nodejs.org/)
+- **pnpm** package manager - [Install via Corepack](https://pnpm.io/installation) or `npm install -g pnpm`
+
+To check your versions:
+
 ```bash
 node --version
-npm --version
+pnpm --version
+```
+
+This project uses pnpm. Enable it without a global install:
+
+```bash
+corepack enable pnpm
 ```
 
 ## 🚀 Quick Start
@@ -32,22 +40,25 @@ cd tech-blog
 ### 2. Install Dependencies
 
 ```bash
-npm install
+pnpm install
 ```
 
 This will install Gatsby and all required packages including:
+
 - React and React DOM
 - Gatsby plugins (image optimization, markdown processing, etc.)
 - Material-UI components
 - Styled Components
 - And more...
 
-**Note for Apple Silicon (M1/M2/M3) users**: If you encounter errors about `sharp` or `vips`, run:
+`sharp` ships prebuilt binaries for current platforms, including Apple Silicon, so no separate `vips` install is needed. If you change Node versions or the lockfile is ever out of sync, a clean reinstall fixes it:
+
 ```bash
-brew install vips
-rm -rf node_modules package-lock.json
-npm install
+rm -rf node_modules
+pnpm install
 ```
+
+Dependency build scripts are allowlisted in `pnpm-workspace.yaml`, so `pnpm install` runs only the native builds Gatsby needs (`sharp`, `lmdb`, `@parcel/watcher`, and so on) and blocks everything else.
 
 ### 3. Create Required Directories (First-Time Setup)
 
@@ -66,6 +77,7 @@ cp .env.example .env.development
 ```
 
 Edit `.env.development` and set:
+
 - `GATSBY_SITE_URL` - Your site URL (e.g., `http://localhost:8000` for development)
 - `GATSBY_GA_TRACKING_ID` - Your Google Analytics tracking ID
 
@@ -74,16 +86,17 @@ For production deployment on Netlify, set these variables in your Netlify dashbo
 ### 5. Start Development Server
 
 ```bash
-npm start
+pnpm start
 ```
 
 or
 
 ```bash
-gatsby develop
+pnpm develop
 ```
 
 Your site will be running at:
+
 - **Local**: `http://localhost:8000`
 - **GraphQL Playground**: `http://localhost:8000/___graphql`
 
@@ -94,16 +107,19 @@ The GraphQL playground is a tool you can use to experiment with querying your da
 ### Creating a New Post
 
 1. Create a new directory in `content/blog/` with a descriptive name:
+
    ```bash
    mkdir content/blog/my-awesome-post
    ```
 
 2. Create an `index.md` file inside that directory:
+
    ```bash
    touch content/blog/my-awesome-post/index.md
    ```
 
 3. Add frontmatter and content to your `index.md`:
+
    ```markdown
    ---
    title: "Your Post Title"
@@ -135,21 +151,24 @@ See `content/blog/README.md` for more detailed instructions.
 ## 🛠️ Available Commands
 
 ### Development
+
 ```bash
-npm start          # Start development server (alias for gatsby develop)
-gatsby develop     # Start development server at http://localhost:8000
-gatsby clean       # Clear Gatsby cache and build artifacts (useful for troubleshooting)
+pnpm start          # Start development server (alias for gatsby develop)
+pnpm develop        # Start development server at http://localhost:8000
+pnpm clean          # Clear Gatsby cache and build artifacts (useful for troubleshooting)
 ```
 
 ### Production
+
 ```bash
-npm run build      # Build production-ready site to /public directory
-gatsby serve       # Serve production build locally for testing
+pnpm build          # Build production-ready site to /public directory
+pnpm serve          # Serve production build locally for testing
 ```
 
 ### Code Formatting
+
 ```bash
-npm run format     # Format code with Prettier
+pnpm format         # Format code with Prettier
 ```
 
 ## 🏗️ Project Structure
@@ -172,6 +191,9 @@ npm run format     # Format code with Prettier
 ├── assets/               # Images and other assets
 ├── gatsby-config.js      # Gatsby configuration
 ├── gatsby-node.js        # Node APIs (page creation)
+├── gatsby-browser.js     # Browser APIs (Material-UI StylesProvider)
+├── gatsby-ssr.js         # SSR APIs (Material-UI JSS collection)
+├── pnpm-workspace.yaml   # pnpm settings and build-script allowlist
 └── package.json          # Dependencies and scripts
 ```
 
@@ -191,10 +213,12 @@ This site is configured to deploy to GitHub Pages automatically via GitHub Actio
 ### Initial Setup
 
 1. **Enable GitHub Pages** in your repository:
+
    - Go to Settings > Pages
    - Under "Build and deployment", select "GitHub Actions" as the source
 
 2. **Set up GitHub Secrets** (Settings > Secrets and variables > Actions):
+
    - `GATSBY_SITE_URL` - Your GitHub Pages URL (required):
      - For `username.github.io` (user/org site): `https://username.github.io`
      - For `username.github.io/repo-name` (project site): `https://username.github.io/repo-name`
@@ -206,11 +230,13 @@ This site is configured to deploy to GitHub Pages automatically via GitHub Actio
 ### Deployment Types
 
 **User/Organization Site** (username.github.io):
+
 - Repository name must be: `username.github.io`
 - Site URL: `https://username.github.io`
 - PATH_PREFIX: Leave empty
 
 **Project Site** (username.github.io/repo-name):
+
 - Repository can have any name (e.g., `tech-blog`)
 - Site URL: `https://username.github.io/repo-name`
 - PATH_PREFIX: `/repo-name` (must match repository name)
@@ -220,51 +246,65 @@ This site is configured to deploy to GitHub Pages automatically via GitHub Actio
 To build and deploy manually:
 
 ```bash
-npm run deploy
+pnpm deploy
 ```
 
 ## 🐛 Troubleshooting
 
 ### Error: ENOENT: no such file or directory, lstat '.cache'
+
 This happens on first-time setup. Create the required directories:
 
 ```bash
 mkdir -p .cache public
-npm start
+pnpm start
 ```
 
-### Sharp installation fails on Apple Silicon (M1/M2/M3)
-If you see errors about `sharp` or `vips` during `npm install`:
+### `ERR_PNPM_IGNORED_BUILDS` during install
+
+pnpm blocks dependency build scripts unless they are reviewed. The native
+packages this project needs are already allowlisted in `pnpm-workspace.yaml`.
+If a new one shows up, review the script and add it:
 
 ```bash
-# Install vips library via Homebrew
-brew install vips
+pnpm approve-builds
+```
 
-# Clean up and reinstall
-rm -rf node_modules package-lock.json
-npm install
+### Native module fails to build
+
+Reinstall from scratch:
+
+```bash
+rm -rf node_modules
+pnpm install
 ```
 
 ### Development server won't start
+
 Try cleaning the Gatsby cache:
+
 ```bash
-gatsby clean
-npm start
+pnpm clean
+pnpm start
 ```
 
 ### Changes not showing up
+
 Restart the development server after making configuration changes:
+
 ```bash
 # Stop the server (Ctrl+C)
-gatsby clean
-npm start
+pnpm clean
+pnpm start
 ```
 
 ### Module not found errors
+
 Reinstall dependencies:
+
 ```bash
-rm -rf node_modules package-lock.json
-npm install
+rm -rf node_modules
+pnpm install
 ```
 
 ## 📚 Learn More

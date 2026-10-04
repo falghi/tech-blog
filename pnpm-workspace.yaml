@@ -1,0 +1,17 @@
+# Gatsby resolves several of its own runtime deps from the project root rather
+# than from its own package, so it needs an npm-style flat node_modules.
+shamefullyHoist: true
+
+allowBuilds:
+  "@parcel/watcher": true
+  core-js: false
+  core-js-pure: false
+  es5-ext: false
+  gatsby: true
+  gatsby-cli: true
+  gatsby-telemetry: true
+  lmdb: true
+  msgpackr-extract: true
+  mozjpeg: true
+  pngquant-bin: true
+  sharp: true

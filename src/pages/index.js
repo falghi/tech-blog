@@ -8,7 +8,7 @@ import LandingPage from "../components/LandingPage"
 const BlogIndex = ({ data }) => {
   const posts = data.allMarkdownRemark.nodes
 
-  posts.forEach((node) => {
+  posts.forEach(node => {
     node.excerpt = node.frontmatter.description || node.excerpt
   })
 
@@ -24,7 +24,7 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}) {
+    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
       nodes {
         excerpt
         fields {
@@ -38,9 +38,13 @@ export const pageQuery = graphql`
           author
           topimage {
             childImageSharp {
-              fluid(maxWidth: 800, quality: 90) {
-                ...GatsbyImageSharpFluid
-              }
+              gatsbyImageData(
+                layout: CONSTRAINED
+                width: 800
+                quality: 90
+                placeholder: BLURRED
+                formats: [AUTO, WEBP, AVIF]
+              )
             }
           }
         }

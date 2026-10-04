@@ -18,8 +18,11 @@ export default class RekomendasiArtikel extends Component {
 
           return (
             <Link key={idx} to={slug} className="one-recommend">
-              {topimage?.childImageSharp?.fluid && (
-                <FluidImg img={topimage.childImageSharp.fluid} alt={title} />
+              {topimage?.childImageSharp?.gatsbyImageData && (
+                <FluidImg
+                  img={topimage.childImageSharp.gatsbyImageData}
+                  alt={title}
+                />
               )}
               <h4>{title}</h4>
             </Link>

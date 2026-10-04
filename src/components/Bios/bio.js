@@ -9,23 +9,30 @@ const Bio = ({ username, name, summary, picture, coauthor }) => {
       style={{
         display: `flex`,
         marginBottom: rhythm(1 / 2),
-        alignItems: `center`
+        alignItems: `center`,
       }}
     >
-      {picture?.fluid && (
-        <div style={{
-          marginRight: rhythm(1 / 2),
-          marginBottom: 0,
-          minWidth: 55,
-        }}>
-          <FluidImg img={picture.fluid} alt={name} imgStyle={{ borderRadius: "50%" }} />
+      {picture?.gatsbyImageData && (
+        <div
+          style={{
+            marginRight: rhythm(1 / 2),
+            marginBottom: 0,
+            minWidth: 55,
+          }}
+        >
+          <FluidImg
+            img={picture.gatsbyImageData}
+            alt={name}
+            imgStyle={{ borderRadius: "50%" }}
+          />
         </div>
       )}
       <div>
         {coauthor ? "Co-authored" : "Written"} by <strong>{name}</strong>
         {summary && (
           <>
-            <br/>{summary}
+            <br />
+            {summary}
           </>
         )}
       </div>
@@ -34,7 +41,7 @@ const Bio = ({ username, name, summary, picture, coauthor }) => {
 }
 
 Bio.defaultProps = {
-  coauthor: false
+  coauthor: false,
 }
 
 export default Bio

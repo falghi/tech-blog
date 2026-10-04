@@ -16,9 +16,12 @@ export default function SmallArticle({ node }) {
     <Styles>
       <Link to={slug}>
         <article className="article-box">
-          {topimage?.childImageSharp?.fluid && (
+          {topimage?.childImageSharp?.gatsbyImageData && (
             <div className="article-box-image">
-              <FluidImg img={topimage.childImageSharp.fluid} alt={title} />
+              <FluidImg
+                img={topimage.childImageSharp.gatsbyImageData}
+                alt={title}
+              />
             </div>
           )}
           <div className="article-box-desc">

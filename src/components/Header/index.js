@@ -14,6 +14,8 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn'
 
 import Image from '../image'
 
+import { getPathname, subscribePathname } from "../../utils/pathname"
+
 import { Styles } from "./style"
 
 export const navData = [
@@ -59,11 +61,16 @@ class Header extends Component {
     this.state = {
       isSticky: false,
       isBackSticky: false,
-      isDrawerOpen: false
+      isDrawerOpen: false,
+      // Stays "/" for SSR and the first client render so hydration matches.
+      // The real value is applied in componentDidMount, then kept current by
+      // onRouteUpdate.
+      pathname: "/"
     }
     this.ref = createRef()
+    this.unsubscribePathname = null
   }
-    
+
   handleScroll = () => {
     if (this.ref.current) {
       console.log(this.ref.current.getBoundingClientRect().top)
@@ -82,18 +89,25 @@ class Header extends Component {
   }
 
   componentDidMount() {
+    // Safe to touch window here: this runs after hydration has matched.
+    this.setState({ pathname: getPathname() })
+    this.unsubscribePathname = subscribePathname(pathname =>
+      this.setState({ pathname })
+    )
+
     typeof window !== "undefined" && window.addEventListener('scroll', this.handleScroll)
   }
 
   componentWillUnmount() {
+    if (this.unsubscribePathname) {
+      this.unsubscribePathname()
+    }
+
     typeof window !== "undefined" && window.removeEventListener('scroll', this.handleScroll)
   }
 
   render() {
-    const { isSticky, isBackSticky, isDrawerOpen } = this.state
-
-    let pathname = typeof window !== "undefined" ? window.location.pathname : ""
-    if (!pathname.endsWith("/")) pathname += "/"
+    const { isSticky, isBackSticky, isDrawerOpen, pathname } = this.state
 
     const topmostPart = (imgName) => (
       <div className="topmost-nav-part">

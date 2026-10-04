@@ -1,54 +1,53 @@
 import React from "react"
-import { StaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import { useStaticQuery, graphql } from "gatsby"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 /*
- * This component is built using `gatsby-image` to automatically serve optimized
- * images with lazy loading and reduced file sizes. The image is loaded using a
- * `useStaticQuery`, which allows us to load the image from directly within this
- * component, rather than having to pass the image data down from pages.
+ * Renders an optimized image from ./assets by file name (the path relative to
+ * that folder), resolved at build time with `useStaticQuery` so callers do not
+ * have to thread image data down from page queries.
  *
  * For more information, see the docs:
- * - `gatsby-image`: https://gatsby.dev/gatsby-image
+ * - `gatsby-plugin-image`: https://gatsby.dev/gatsby-plugin-image
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
  */
-const Image = ({ imgName, alt, smalldesc, imgStyle }) => (
-  <StaticQuery
-    query={graphql`
-      query {
-        allImageSharp {
-          edges {
-            node {
-              fluid {
-                ...GatsbyImageSharpFluid
-                originalName
-              }
-            }
+const Image = ({ imgName, alt = "", smalldesc = "", imgStyle = {} }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      allFile(
+        filter: {
+          sourceInstanceName: { eq: "assets" }
+          extension: { regex: "/(jpg|jpeg|png|webp|tif|tiff)/" }
+        }
+      ) {
+        nodes {
+          relativePath
+          childImageSharp {
+            gatsbyImageData(layout: CONSTRAINED, width: 800, quality: 90)
           }
         }
       }
-    `}
-    render={data => {
-      const image = data.allImageSharp.edges.find(
-        edge => edge.node.fluid.originalName === imgName
-      )
-      if (!image) {
-        return null
-      }
-      return (
-        <>
-          <Img fluid={image.node.fluid} alt={alt} imgStyle={imgStyle} />
-          <small dangerouslySetInnerHTML={{ __html: smalldesc }} />
-        </>
-      )
-    }}
-  />
-)
+    }
+  `)
 
-Image.defaultProps = {
-  alt: "",
-  smalldesc: "",
-  imgStyle: {}
+  const image = data.allFile.nodes.find(
+    node => node.relativePath === imgName && node.childImageSharp
+  )
+
+  if (!image) {
+    return null
+  }
+
+  return (
+    <>
+      <GatsbyImage
+        image={image.childImageSharp.gatsbyImageData}
+        alt={alt}
+        imgStyle={imgStyle}
+      />
+      <small dangerouslySetInnerHTML={{ __html: smalldesc }} />
+    </>
+  )
 }
 
 export default Image

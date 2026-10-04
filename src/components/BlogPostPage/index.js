@@ -16,7 +16,7 @@ function BlogPostPage({ post, next, previous }) {
 
   return (
     <div className="layout">
-      <article style={{ maxWidth: '900px', margin: '0 auto' }}>
+      <article style={{ maxWidth: "900px", margin: "0 auto" }}>
         <header>
           <h1
             style={{
@@ -36,15 +36,15 @@ function BlogPostPage({ post, next, previous }) {
             {date}
           </p>
         </header>
-        {topimage?.childImageSharp?.fluid && (
+        {topimage?.childImageSharp?.gatsbyImageData && (
           <section>
-            <p>
-              <FluidImg
-                img={topimage.childImageSharp.fluid}
-                alt={title}
-                smalldesc={topimagedesc}
-              />
-            </p>
+            {/* GatsbyImage renders a <div>, which a browser would hoist out of a
+                wrapping <p> and break hydration. */}
+            <FluidImg
+              img={topimage.childImageSharp.gatsbyImageData}
+              alt={title}
+              smalldesc={topimagedesc}
+            />
           </section>
         )}
         <section dangerouslySetInnerHTML={{ __html: html }} />
@@ -60,7 +60,13 @@ function BlogPostPage({ post, next, previous }) {
         )}
       </article>
 
-      <nav style={{ marginTop: rhythm(1.5), maxWidth: '900px', margin: rhythm(1.5) + ' auto 0' }}>
+      <nav
+        style={{
+          marginTop: rhythm(1.5),
+          maxWidth: "900px",
+          margin: rhythm(1.5) + " auto 0",
+        }}
+      >
         <ul
           style={{
             display: `flex`,

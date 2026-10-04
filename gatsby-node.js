@@ -23,7 +23,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
-        allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}) {
+        allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
           nodes {
             fields {
               slug
@@ -61,15 +61,17 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   // Create category pages.
-  const categories = Array.from(new Set(posts.map(post => post.frontmatter.category).filter(Boolean)))
+  const categories = Array.from(
+    new Set(posts.map(post => post.frontmatter.category).filter(Boolean))
+  )
 
-  categories.forEach((category) => {
+  categories.forEach(category => {
     createPage({
       path: `category/${category}`,
       component: CategoryPageTemplate,
       context: {
-        category: category
-      }
+        category: category,
+      },
     })
   })
 }

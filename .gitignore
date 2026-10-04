@@ -69,3 +69,9 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
+
+# pnpm
+.pnpm-store/
+
+# Playwright MCP
+.playwright-mcp/

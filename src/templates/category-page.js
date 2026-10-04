@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
@@ -9,7 +9,7 @@ const CategoryPageTemplate = ({ data, pageContext }) => {
   const categoryName = pageContext.category
   let posts = data.allMarkdownRemark.nodes
 
-  posts.forEach((node) => {
+  posts.forEach(node => {
     node.excerpt = node.frontmatter.description || node.excerpt
   })
   posts = posts.slice(0, 30)
@@ -17,15 +17,12 @@ const CategoryPageTemplate = ({ data, pageContext }) => {
   const categoryJson = {
     slug: categoryName,
     name: categoryName.charAt(0).toUpperCase() + categoryName.slice(1),
-    desc: `Articles about ${categoryName}`
+    desc: `Articles about ${categoryName}`,
   }
 
   return (
     <Layout>
-      <SEO
-        title={categoryJson.name}
-        description={categoryJson.desc}
-      />
+      <SEO title={categoryJson.name} description={categoryJson.desc} />
       <CategoryPage category={categoryJson} posts={posts} />
     </Layout>
   )
@@ -36,8 +33,8 @@ export default CategoryPageTemplate
 export const pageQuery = graphql`
   query BlogPostByCategory($category: String!) {
     allMarkdownRemark(
-      sort: {fields: frontmatter___date, order: DESC}
-      filter: {frontmatter: {category: {eq: $category}}}
+      sort: { frontmatter: { date: DESC } }
+      filter: { frontmatter: { category: { eq: $category } } }
     ) {
       nodes {
         excerpt
@@ -52,9 +49,13 @@ export const pageQuery = graphql`
           author
           topimage {
             childImageSharp {
-              fluid(maxWidth: 800, quality: 90) {
-                ...GatsbyImageSharpFluid
-              }
+              gatsbyImageData(
+                layout: CONSTRAINED
+                width: 800
+                quality: 90
+                placeholder: BLURRED
+                formats: [AUTO, WEBP, AVIF]
+              )
             }
           }
         }

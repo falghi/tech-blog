@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react"
 import { Link } from "gatsby"
 
 import SmallArticle from "../TwoSidedArticleList/SmallArticle"
-import FluidImg from '../fluidimg'
+import FluidImg from "../fluidimg"
 
 import { Styles } from "./style"
 import { rhythm } from "../../utils/typography"
@@ -18,7 +18,7 @@ function TrendingArtikel({ posts }) {
   const excerpt = firstPost.excerpt
 
   const smallerSecondPosts = JSON.parse(JSON.stringify(posts.slice(1)))
-  smallerSecondPosts.forEach((node) => {
+  smallerSecondPosts.forEach(node => {
     node.excerpt = shortenText(node.excerpt, 120)
   })
 
@@ -26,9 +26,12 @@ function TrendingArtikel({ posts }) {
     <Styles>
       <div className="trending-side-left">
         <Link to={slug} className="first-trending">
-          {topimage?.childImageSharp?.fluid && (
+          {topimage?.childImageSharp?.gatsbyImageData && (
             <div className="first-trending-img">
-              <FluidImg img={topimage.childImageSharp.fluid} alt={title} />
+              <FluidImg
+                img={topimage.childImageSharp.gatsbyImageData}
+                alt={title}
+              />
             </div>
           )}
           <div className="article-box-desc">
@@ -56,10 +59,14 @@ function TrendingArtikel({ posts }) {
         </Link>
       </div>
       <div className="trending-side-right trending-desktop">
-        {smallerSecondPosts.map((node, idx) => <SmallArticle key={idx} node={node} /> )}
+        {smallerSecondPosts.map((node, idx) => (
+          <SmallArticle key={idx} node={node} />
+        ))}
       </div>
       <div className="trending-side-right trending-mobile">
-        {posts.slice(1).map((node, idx) => <SmallArticle key={idx} node={node} /> )}
+        {posts.slice(1).map((node, idx) => (
+          <SmallArticle key={idx} node={node} />
+        ))}
       </div>
     </Styles>
   )

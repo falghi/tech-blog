@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components"
+import styled, { css, keyframes } from "styled-components"
 
 import { rhythm } from "../../utils/typography"
 
@@ -7,10 +7,9 @@ export const fadeUp = keyframes`
   to { opacity: 1; transform: translateY(0); }
 `
 
-export const Section = styled.section`
-  padding-top: ${rhythm(2)};
-  padding-bottom: ${rhythm(2)};
-
+// Shared by every section header so the eyebrow, title, and lead look the same
+// regardless of which wrapper renders them.
+const sectionHeader = css`
   .section-eyebrow {
     display: inline-block;
     font-size: 0.78rem;
@@ -32,10 +31,18 @@ export const Section = styled.section`
     color: #444;
     margin-bottom: ${rhythm(1.5)};
   }
+`
 
-  .alt-surface {
-    background: ${props => props.theme.color.lightergray};
-  }
+const altSurface = css`
+  background: ${props => props.theme.color.lightergray};
+`
+
+export const Section = styled.section`
+  padding-top: ${rhythm(2)};
+  padding-bottom: ${rhythm(2)};
+
+  ${sectionHeader}
+  ${altSurface}
 `
 
 export const HeroSection = styled.section`
@@ -413,6 +420,9 @@ export const ContactSection = styled.section`
   padding-top: ${rhythm(2)};
   padding-bottom: ${rhythm(2)};
   border-top: 1px solid ${props => props.theme.color.lightgray};
+
+  ${sectionHeader}
+  ${altSurface}
 
   .contact-cards {
     display: grid;

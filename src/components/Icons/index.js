@@ -8,8 +8,8 @@ import StarOutlineIcon from "@material-ui/icons/StarOutline"
 import CodeIcon from "@material-ui/icons/Code"
 import StorageIcon from "@material-ui/icons/Storage"
 import TimelineIcon from "@material-ui/icons/Timeline"
-import FunctionsIcon from "@material-ui/icons/Functions"
-import LanguageIcon from "@material-ui/icons/Language"
+import AccountTreeIcon from "@material-ui/icons/AccountTree"
+import LaunchIcon from "@material-ui/icons/Launch"
 import OpenInNewIcon from "@material-ui/icons/OpenInNew"
 
 export const MediumIcon = props => (
@@ -33,10 +33,10 @@ const registry = {
   work: WorkOutlineIcon,
   school: SchoolIcon,
   star: StarOutlineIcon,
-  consult: LanguageIcon,
   code: CodeIcon,
   api: StorageIcon,
-  algo: FunctionsIcon,
+  architecture: AccountTreeIcon,
+  delivery: LaunchIcon,
   external: OpenInNewIcon,
   timeline: TimelineIcon,
 }

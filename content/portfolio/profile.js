@@ -234,29 +234,31 @@ export const projects = [
   },
 ]
 
+// Reflects the work described in the resume rather than generic consulting.
 export const services = [
   {
-    title: "IT Consultation",
+    title: "Full-Stack Product Engineering",
     blurb:
-      "I can help you find the solution for your problem using technological innovation.",
-    icon: "consult",
-  },
-  {
-    title: "Web Development",
-    blurb:
-      "I can help you build any kind of website that will solve your problem.",
+      "Ship features end to end across React, GraphQL, and Rails or Go, from schema to interface.",
     icon: "code",
   },
   {
-    title: "RESTful API Design",
-    blurb: "I can help you design and build a RESTful API for your business.",
+    title: "System Design & Architecture",
+    blurb:
+      "Design for scale: event-driven systems, caching, database choice, and the cost of running it.",
+    icon: "architecture",
+  },
+  {
+    title: "API Design & Backend Services",
+    blurb:
+      "Evolve existing APIs without breaking clients, and migrate legacy systems to services that hold up.",
     icon: "api",
   },
   {
-    title: "Algorithm Design",
+    title: "Developer Experience & Delivery",
     blurb:
-      "I can help you solve any problem in your business that requires advanced analysis.",
-    icon: "algo",
+      "Faster, safer releases through CI/CD, feature flags, observability, and shared tooling.",
+    icon: "delivery",
   },
 ]
 

@@ -114,7 +114,11 @@ const PortfolioPage = ({ data }) => {
       <Section className="alt-surface" id="services">
         <div className="layout">
           <span className="section-eyebrow">Services</span>
-          <h2 className="section-title">What can I do for you?</h2>
+          <h2 className="section-title">How I can help</h2>
+          <p className="section-lead">
+            The kinds of problems I take on, drawn from what I actually do
+            day to day.
+          </p>
           <Services services={services} />
         </div>
       </Section>

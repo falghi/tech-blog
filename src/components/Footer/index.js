@@ -59,9 +59,8 @@ const StyledFooter = styled.footer`
 `
 
 const socialLinks = [
-  { name: "GitHub", to: "https://github.com/falghi" },
   { name: "LinkedIn", to: "https://www.linkedin.com/in/alghi" },
-  { name: "Instagram", to: "https://www.instagram.com/alghi01/" },
+  { name: "GitHub", to: "https://github.com/falghi" },
   { name: "Medium", to: "https://medium.com/@firdaus.alghifari" },
 ]
 

@@ -18,9 +18,6 @@ const SEO = ({ description = ``, lang = `id`, meta = [], title }) => {
           siteMetadata {
             title
             description
-            social {
-              instagram
-            }
           }
         }
       }
@@ -54,19 +51,15 @@ const SEO = ({ description = ``, lang = `id`, meta = [], title }) => {
           content: `website`,
         },
         {
-          name: `instagram:card`,
+          name: `twitter:card`,
           content: `summary`,
         },
         {
-          name: `instagram:creator`,
-          content: site.siteMetadata.social.instagram,
-        },
-        {
-          name: `instagram:title`,
+          name: `twitter:title`,
           content: title,
         },
         {
-          name: `instagram:description`,
+          name: `twitter:description`,
           content: metaDescription,
         },
       ].concat(meta)}

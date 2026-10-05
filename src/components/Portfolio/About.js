@@ -11,7 +11,6 @@ const About = ({ portrait, profile }) => {
     { label: "Based in", value: profile.location },
     { label: "Role", value: profile.roles[0] },
     { label: "Website", value: "falghifari.com" },
-    { label: "Email", value: profile.email, href: `mailto:${profile.email}` },
   ]
 
   return (

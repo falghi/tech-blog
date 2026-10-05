@@ -5,23 +5,25 @@ import { Icon } from "../Icons"
 import { ContactSection, CtaButtonFilled } from "./styles"
 
 const Contact = ({ profile }) => {
+  const [linkedin] = profile.social
+
   const cards = [
+    {
+      icon: "linkedin",
+      title: "Get in touch",
+      body: "LinkedIn is the best way to reach me",
+      href: linkedin.to,
+    },
+    {
+      icon: "github",
+      title: "See my code",
+      body: "Open source work and side projects",
+      href: profile.social.find(s => s.icon === "github").to,
+    },
     {
       icon: "location",
       title: "Where to find me",
       body: profile.location,
-    },
-    {
-      icon: "email",
-      title: "Email me at",
-      body: profile.email,
-      href: `mailto:${profile.email}`,
-    },
-    {
-      icon: "linkedin",
-      title: "Reach me at",
-      body: "LinkedIn, Instagram",
-      href: profile.social.find(s => s.icon === "linkedin").to,
     },
   ]
 
@@ -52,7 +54,7 @@ const Contact = ({ profile }) => {
                 className="contact-card"
                 key={title}
                 href={href}
-                target={href.startsWith("mailto:") ? undefined : "_blank"}
+                target="_blank"
                 rel="noopener noreferrer"
               >
                 {inner}
@@ -66,8 +68,8 @@ const Contact = ({ profile }) => {
         </div>
 
         <div style={{ marginTop: "2rem" }}>
-          <CtaButtonFilled href={`mailto:${profile.email}`}>
-            Send me an email
+          <CtaButtonFilled href={linkedin.to} target="_blank" rel="noopener noreferrer">
+            Connect on LinkedIn
           </CtaButtonFilled>
         </div>
       </div>

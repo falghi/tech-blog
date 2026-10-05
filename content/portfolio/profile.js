@@ -6,27 +6,21 @@ export const profile = {
   initials: "FA",
   roles: ["Full Stack Web Developer", "Software Engineer"],
   location: "Tokyo, Japan",
-  email: "firdausalghi01@gmail.com",
   summary:
     "A software engineer with experiences in Full-Stack Web Development, Machine Learning, and Competitive Programming. Loves to make innovative solution in technology to solve any kind of problems.",
+  // LinkedIn is the primary point of contact, so it leads.
   social: [
-    { name: "GitHub", to: "https://github.com/falghi", icon: "github" },
     {
       name: "LinkedIn",
       to: "https://www.linkedin.com/in/alghi",
       icon: "linkedin",
     },
-    {
-      name: "Instagram",
-      to: "https://www.instagram.com/alghi01/",
-      icon: "instagram",
-    },
+    { name: "GitHub", to: "https://github.com/falghi", icon: "github" },
     {
       name: "Medium",
       to: "https://medium.com/@firdaus.alghifari",
       icon: "medium",
     },
-    { name: "Twitter", to: "https://twitter.com/alghihere", icon: "twitter" },
   ],
 }
 

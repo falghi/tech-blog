@@ -1,9 +1,6 @@
 import React from "react"
 import GitHubIcon from "@material-ui/icons/GitHub"
 import LinkedInIcon from "@material-ui/icons/LinkedIn"
-import InstagramIcon from "@material-ui/icons/Instagram"
-import TwitterIcon from "@material-ui/icons/Twitter"
-import EmailIcon from "@material-ui/icons/Email"
 import LocationOnIcon from "@material-ui/icons/LocationOn"
 import WorkOutlineIcon from "@material-ui/icons/WorkOutline"
 import SchoolIcon from "@material-ui/icons/School"
@@ -31,10 +28,7 @@ export const MediumIcon = props => (
 const registry = {
   github: GitHubIcon,
   linkedin: LinkedInIcon,
-  instagram: InstagramIcon,
-  twitter: TwitterIcon,
   medium: MediumIcon,
-  email: EmailIcon,
   location: LocationOnIcon,
   work: WorkOutlineIcon,
   school: SchoolIcon,

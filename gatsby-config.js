@@ -146,7 +146,6 @@ module.exports = {
     description: `Firdaus Al Ghifari is a software engineer working on full-stack web development, machine learning, and distributed systems. This is where he writes about it.`,
     siteUrl: process.env.GATSBY_SITE_URL || `https://blog.falghifari.com`,
     social: {
-      instagram: `alghi01`,
       github: `falghi`,
       linkedin: `alghi`,
     },

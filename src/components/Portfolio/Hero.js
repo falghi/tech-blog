@@ -28,8 +28,14 @@ const Hero = ({ profile }) => {
             {profile.location}
           </span>
           <span>
-            <Icon name="email" fontSize="small" />
-            {profile.email}
+            <Icon name="linkedin" fontSize="small" />
+            <a
+              href={profile.social[0].to}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {profile.social[0].name}
+            </a>
           </span>
         </div>
 

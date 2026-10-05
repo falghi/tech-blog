@@ -15,7 +15,7 @@ const About = ({ portrait, profile }) => {
   ]
 
   return (
-    <TwoColumn>
+    <TwoColumn className="layout">
       <div className="col-image">
         {image && (
           <GatsbyImage

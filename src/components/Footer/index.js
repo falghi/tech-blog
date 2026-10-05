@@ -1,7 +1,6 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import styled from 'styled-components'
-import Breadcrumbs from '@material-ui/core/Breadcrumbs'
+import React from "react"
+import { Link } from "gatsby"
+import styled from "styled-components"
 
 import { navData } from "../Header"
 import { rhythm } from "../../utils/typography"
@@ -9,78 +8,87 @@ import { rhythm } from "../../utils/typography"
 const StyledFooter = styled.footer`
   padding-top: ${rhythm(1.5)};
   text-align: center;
+  border-top: 1px solid ${props => props.theme.color.lightgray};
 
-  .MuiBreadcrumbs-ol {
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: ${rhythm(0.75)};
   }
 
-  li {
-    margin-bottom: .5rem;
-  }
-
-  a {
+  .footer-nav a {
     box-shadow: none;
     transition: color 0.25s;
+    padding: 4px 14px;
   }
 
-  a:hover {
+  .footer-nav a:hover {
     color: ${props => props.theme.color.red};
   }
 
+  .footer-social {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: ${rhythm(0.5)};
+  }
+
+  .footer-social a {
+    color: #555;
+    box-shadow: none;
+    padding: 6px 10px;
+    font-size: 0.95rem;
+    transition: color 0.25s;
+  }
+
+  .footer-social a:hover {
+    color: ${props => props.theme.color.primary};
+  }
+
   hr {
-    margin-top: .5rem;
-    margin-bottom: .75rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
   }
 
   small {
     display: inline-block;
-    padding-top: .5rem;
+    padding-top: 0.5rem;
     color: gray;
   }
 `
 
-const anotherNavdata = [
-  {
-    to: "/privacy-policy",
-    name: "Privacy Policy",
-    external: false
-  },
-  {
-    to: "https://falghifari.com/#contact",
-    name: "Contact",
-    external: true
-  },
+const socialLinks = [
+  { name: "LinkedIn", to: "https://www.linkedin.com/in/alghi" },
+  { name: "GitHub", to: "https://github.com/falghi" },
+  { name: "Medium", to: "https://medium.com/@firdaus.alghifari" },
 ]
 
-export default function index() {
+export default function Footer() {
   return (
     <StyledFooter>
       <div className="layout">
-        <Breadcrumbs aria-label="breadcrumb">
-          {navData.map(({ to, name }, index) => (
-            <Link to={to} key={index}>
+        <nav className="footer-nav" aria-label="footer">
+          {navData.map(({ to, name }) => (
+            <Link to={to} key={name}>
               {name}
             </Link>
           ))}
-        </Breadcrumbs>
-      </div>
-      <hr/>
-      <div className="layout">
-        <Breadcrumbs aria-label="breadcrumb">
-          {anotherNavdata.map(({ to, name, external }, index) => (
-            external ? (
-              <a href={to} key={index} target="_blank" rel="noopener noreferrer">
-                {name}
-              </a>
-            ) : (
-              <Link to={to} key={index}>
-                {name}
-              </Link>
-            )
+          <Link to="/blog/privacy-policy/">Privacy Policy</Link>
+        </nav>
+
+        <div className="footer-social">
+          {socialLinks.map(({ name, to }) => (
+            <a href={to} key={name} target="_blank" rel="noopener noreferrer">
+              {name}
+            </a>
           ))}
-        </Breadcrumbs>
+        </div>
+
+        <hr />
+
         <small>
-          © {new Date().getFullYear()} Tech Blog by Firdaus Al Ghifari. All rights reserved
+          © {new Date().getFullYear()} Firdaus Al Ghifari. All rights reserved
         </small>
       </div>
     </StyledFooter>

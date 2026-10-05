@@ -28,7 +28,7 @@ export const Styles = styled.header`
   .topmost-nav-part {
     display: flex;
     align-items: center;
-    
+
     .button-drawer {
       width: 80px;
       margin-left: 18px;
@@ -46,7 +46,7 @@ export const Styles = styled.header`
         padding-right: 4px;
         padding-top: 8.5px;
         display: inline-block;
-        transition: color .25s;
+        transition: color 0.25s;
       }
 
       a:hover {
@@ -68,7 +68,7 @@ export const Styles = styled.header`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    
+
     a {
       box-shadow: none;
       color: initial;
@@ -76,7 +76,7 @@ export const Styles = styled.header`
       margin-left: 16px;
       margin-right: 16px;
       border-bottom: 2px solid transparent;
-      transition: border-color .5s;
+      transition: border-color 0.5s;
     }
 
     a:hover {
@@ -88,6 +88,37 @@ export const Styles = styled.header`
       font-size: 1rem;
       margin-left: 10px;
       margin-right: 10px;
+    }
+  }
+
+  .blog-nav-lists {
+    text-align: center;
+    background: ${props => props.theme.color.lightblue};
+    padding-top: 7px;
+    padding-bottom: 7px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    a {
+      box-shadow: none;
+      color: ${props => props.theme.color.primaryDark};
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 2px 1px;
+      margin-left: 14px;
+      margin-right: 14px;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.25s, color 0.25s;
+    }
+
+    a:hover {
+      border-color: ${props => props.theme.color.primary};
+    }
+
+    a.active {
+      border-color: ${props => props.theme.color.primary};
+      color: ${props => props.theme.color.red};
     }
   }
 
@@ -156,7 +187,8 @@ export const Styles = styled.header`
       }
     }
 
-    .navbar-lists {
+    .navbar-lists,
+    .blog-nav-lists {
       display: none;
     }
   }

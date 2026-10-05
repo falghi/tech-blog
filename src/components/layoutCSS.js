@@ -8,6 +8,10 @@ export const Styles = styled.div`
     padding-bottom: ${rhythm(1.5)};
   }
 
+  .topmost-container.edge-to-edge {
+    padding-top: 0;
+  }
+
   .layout {
     margin-left: auto;
     margin-right: auto;

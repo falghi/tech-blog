@@ -68,8 +68,8 @@ const plugins = [
               return Object.assign({}, node.frontmatter, {
                 description: node.frontmatter.description || node.excerpt,
                 date: node.frontmatter.date,
-                url: site.siteMetadata.siteUrl + "/" + node.fields.slug,
-                guid: site.siteMetadata.siteUrl + "/" + node.fields.slug,
+                url: site.siteMetadata.siteUrl + "/blog" + node.fields.slug,
+                guid: site.siteMetadata.siteUrl + "/blog" + node.fields.slug,
                 custom_elements: [{ "content:encoded": node.html }],
               })
             })
@@ -143,10 +143,11 @@ module.exports = {
       name: `Firdaus Al Ghifari`,
       summary: `Full-stack Software Engineer, Tech Enthusiast.`,
     },
-    description: `A blog about software development, programming tutorials, and tech insights.`,
+    description: `Firdaus Al Ghifari is a software engineer working on full-stack web development, machine learning, and distributed systems. This is where he writes about it.`,
     siteUrl: process.env.GATSBY_SITE_URL || `https://blog.falghifari.com`,
     social: {
-      instagram: `alghi01`,
+      github: `falghi`,
+      linkedin: `alghi`,
     },
   },
   plugins,

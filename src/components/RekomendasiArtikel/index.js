@@ -3,6 +3,8 @@ import { Link } from "gatsby"
 
 import FluidImg from "../fluidimg"
 
+import { blogPath } from "../../utils/paths"
+
 import { Styles } from "./style"
 
 export default class RekomendasiArtikel extends Component {
@@ -12,7 +14,7 @@ export default class RekomendasiArtikel extends Component {
     return (
       <Styles>
         {posts.map((node, idx) => {
-          const slug = node.fields?.slug || node.slug
+          const slug = blogPath(node)
           const title = node.frontmatter?.title || node.title
           const topimage = node.frontmatter?.topimage || node.topimage
 

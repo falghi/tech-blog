@@ -1,9 +1,15 @@
-# Tech Blog
+# Portfolio & Tech Blog
 
-A Gatsby-based tech blog built with React, styled-components, and local Markdown files for content management.
+A Gatsby 5 site combining a personal portfolio homepage with a tech blog, sharing one
+theme, one layout, and one image pipeline.
+
+- `/` — portfolio (hero, about, skills, resume, projects, services, contact)
+- `/blog/` — blog index
+- `/blog/<post>/` — articles
+- `/blog/category/<category>/` — category archives
 
 <p align="center">
-  <a href="https://blog.falghifari.com">
+  <a href="https://falghifari.com">
     <img src="./assets/tech-blog-demo.gif" alt="Tech Blog Demo" width="100%" />
   </a>
 </p>
@@ -176,35 +182,50 @@ pnpm format         # Format code with Prettier
 ```
 .
 ├── content/
-│   └── blog/              # Blog posts in Markdown
-│       ├── post-1/
-│       │   ├── index.md
-│       │   └── images.jpg
-│       └── post-2/
-│           └── index.md
+│   ├── blog/              # Blog posts in Markdown
+│   │   ├── post-1/
+│   │   │   ├── index.md
+│   │   │   └── images.jpg
+│   │   └── post-2/
+│   │       └── index.md
+│   └── portfolio/
+│       └── profile.js     # Portfolio content as data (resume, projects, skills)
 ├── src/
-│   ├── components/        # React components
-│   ├── pages/            # Page components
-│   ├── templates/        # Post and category templates
-│   └── utils/            # Utility functions
-├── static/               # Static assets
-├── assets/               # Images and other assets
-├── gatsby-config.js      # Gatsby configuration
-├── gatsby-node.js        # Node APIs (page creation)
-├── gatsby-browser.js     # Browser APIs (Material-UI StylesProvider)
-├── gatsby-ssr.js         # SSR APIs (Material-UI JSS collection)
-├── pnpm-workspace.yaml   # pnpm settings and build-script allowlist
-└── package.json          # Dependencies and scripts
+│   ├── components/
+│   │   ├── Portfolio/     # Portfolio sections
+│   │   ├── Icons/         # Icon registry shared by data-driven components
+│   │   └── ...            # Layout, header, footer, blog components
+│   ├── pages/
+│   │   ├── index.js       # Portfolio homepage
+│   │   ├── blog.js        # Blog index
+│   │   └── blog/          # Additional blog pages (privacy policy)
+│   ├── templates/         # Post and category templates
+│   └── utils/             # Utility functions, including blog path helpers
+├── static/                # Static assets
+├── assets/                # Images, including assets/portfolio for project shots
+├── gatsby-config.js       # Gatsby configuration
+├── gatsby-node.js         # Node APIs (page creation)
+├── gatsby-browser.js      # Browser APIs (StylesProvider, route updates)
+├── gatsby-ssr.js          # SSR APIs (Material-UI JSS collection)
+├── pnpm-workspace.yaml    # pnpm settings and build-script allowlist
+└── package.json           # Dependencies and scripts
 ```
 
 ## 🎨 Tech Stack
 
-- **Framework**: Gatsby (React-based static site generator)
-- **Styling**: styled-components + Material-UI
-- **Content**: Local Markdown files
-- **Typography**: WordPress 2016 theme
-- **Image Processing**: gatsby-plugin-sharp
+- **Framework**: Gatsby 5 (React-based static site generator)
+- **Styling**: styled-components + Material-UI, themed from `src/components/theme.js`
+- **Content**: Markdown for blog posts, a data module for portfolio content
+- **Typography**: WordPress 2016 theme with Roboto headings and Open Sans body
+- **Image Processing**: gatsby-plugin-image + gatsby-plugin-sharp (AVIF/WebP with blurred placeholders)
+- **Icons**: Material-UI icons via the registry in `src/components/Icons`
 - **Deployment**: GitHub Pages + GitHub Actions
+
+### Adding portfolio content
+
+Portfolio copy lives in `content/portfolio/profile.js`. Project images are read from
+`assets/portfolio/` and matched by the `image` field, so adding a project means adding the
+file and referencing its path relative to `assets/`.
 
 ## 🚢 Deployment
 
@@ -219,10 +240,10 @@ This site is configured to deploy to GitHub Pages automatically via GitHub Actio
 
 2. **Set up GitHub Secrets** (Settings > Secrets and variables > Actions):
 
-   - `GATSBY_SITE_URL` - Your GitHub Pages URL (required):
-     - For `username.github.io` (user/org site): `https://username.github.io`
-     - For `username.github.io/repo-name` (project site): `https://username.github.io/repo-name`
-   - `PATH_PREFIX` - Only needed for project sites (e.g., `/tech-blog`). Leave empty for user/org sites.
+   - `GATSBY_SITE_URL` - The canonical site URL (required), e.g. `https://falghifari.com`.
+     Used for RSS, sitemap, and Open Graph metadata.
+   - `PATH_PREFIX` - Only needed for GitHub Pages project sites (e.g. `/tech-blog`).
+     Leave empty when serving from a custom domain such as `falghifari.com`.
    - `GATSBY_GA_TRACKING_ID` - Your Google Analytics tracking ID (optional, e.g., `UA-164225247-3`)
 
 3. **Push to main branch** - The GitHub Action will automatically build and deploy

@@ -17,6 +17,18 @@ export const wrapRootElement = ({ element }) => (
 // client-side navigation.
 export const onRouteUpdate = ({ location }) => {
   setPathname(location.pathname)
+
+  // Cross-page anchor links (e.g. Resume from /blog/) need the target page's
+  // markup to exist before scrolling, so wait a tick after the route settles.
+  if (location.hash) {
+    requestAnimationFrame(() => {
+      const target = document.getElementById(location.hash.slice(1))
+
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" })
+      }
+    })
+  }
 }
 
 export const onInitialClientRender = () => {

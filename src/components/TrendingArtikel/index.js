@@ -7,12 +7,13 @@ import FluidImg from "../fluidimg"
 import { Styles } from "./style"
 import { rhythm } from "../../utils/typography"
 import { shortenText } from "../../utils/textformatting"
+import { blogPath } from "../../utils/paths"
 
 function TrendingArtikel({ posts }) {
   if (posts.length === 0) return <></>
 
   const firstPost = posts[0]
-  const slug = firstPost.fields?.slug || firstPost.slug
+  const slug = blogPath(firstPost)
   const title = firstPost.frontmatter?.title || firstPost.title
   const topimage = firstPost.frontmatter?.topimage || firstPost.topimage
   const excerpt = firstPost.excerpt

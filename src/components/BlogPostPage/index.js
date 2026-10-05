@@ -5,6 +5,7 @@ import Bios from "../Bios"
 import FluidImg from "../fluidimg"
 
 import { rhythm, scale } from "../../utils/typography"
+import { blogPath } from "../../utils/paths"
 
 function BlogPostPage({ post, next, previous }) {
   const title = post.frontmatter?.title || post.title
@@ -78,14 +79,14 @@ function BlogPostPage({ post, next, previous }) {
         >
           <li>
             {previous && (
-              <Link to={previous.fields?.slug || previous.slug} rel="prev">
+              <Link to={blogPath(previous)} rel="prev">
                 ← {previous.frontmatter?.title || previous.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={next.fields?.slug || next.slug} rel="next">
+              <Link to={blogPath(next)} rel="next">
                 {next.frontmatter?.title || next.title} →
               </Link>
             )}

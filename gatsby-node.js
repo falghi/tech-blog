@@ -1,6 +1,8 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
+const { blogPath, categoryPath } = require(`./src/utils/paths`)
+
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
@@ -23,7 +25,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
-        allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+        allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
           nodes {
             fields {
               slug
@@ -50,9 +52,10 @@ exports.createPages = async ({ graphql, actions }) => {
     const next = index === 0 ? null : posts[index - 1]
 
     createPage({
-      path: post.fields.slug,
+      path: blogPath(post),
       component: blogPost,
       context: {
+        // The template queries on the raw slug, without the /blog prefix.
         slug: post.fields.slug,
         previous,
         next,
@@ -67,7 +70,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   categories.forEach(category => {
     createPage({
-      path: `category/${category}`,
+      path: categoryPath(category),
       component: CategoryPageTemplate,
       context: {
         category: category,

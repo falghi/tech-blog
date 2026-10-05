@@ -3,11 +3,13 @@ import { Link } from "gatsby"
 
 import FluidImg from "../../fluidimg"
 
+import { blogPath } from "../../../utils/paths"
+
 import { Styles } from "./style"
 import { rhythm } from "../../../utils/typography"
 
 export default function SmallArticle({ node }) {
-  const slug = node.fields?.slug || node.slug
+  const slug = blogPath(node)
   const title = node.frontmatter?.title || node.title
   const topimage = node.frontmatter?.topimage || node.topimage
   const excerpt = node.excerpt

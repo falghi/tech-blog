@@ -11,12 +11,16 @@ import { Styles } from "./layoutCSS"
 import "react-toastify/dist/ReactToastify.css";
 import "./layout.css"
 
-const Layout = ({ children }) => {
+// `edgeToEdge` drops the container's top padding for pages that open with a
+// full-width section carrying its own padding, such as the portfolio hero.
+const Layout = ({ children, edgeToEdge = false }) => {
   return (
     <ThemeProvider theme={theme}>
       <Styles>
         <Header />
-        <div className="topmost-container">
+        <div
+          className={`topmost-container${edgeToEdge ? " edge-to-edge" : ""}`}
+        >
           <main>{children}</main>
           <Footer />
         </div>

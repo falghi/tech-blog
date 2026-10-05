@@ -40,7 +40,7 @@ const PortfolioPage = ({ data }) => {
   })
 
   return (
-    <Layout>
+    <Layout edgeToEdge>
       <SEO
         title="Firdaus Al Ghifari - Software Engineer"
         description={profile.summary}
